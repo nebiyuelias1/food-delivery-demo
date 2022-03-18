@@ -1,12 +1,14 @@
-from django.db import models
-
-from django_geofield import fields
+from django.contrib.gis.db import models
 
 # Create your models here.
 class Restaurant(models.Model):
     name = models.CharField(max_length=1000)
     
-    position = fields.GeoPositionField(db_index=True)
+    location = models.PointField()
+    
+    address = models.CharField(max_length=100)
+    
+    city = models.CharField(max_length=50)
     
     def __str__(self) -> str:
-        return f'{self.name} ({self.position})'
+        return f'{self.name}'

@@ -2,13 +2,18 @@ version: "3.9"
    
 services:
   db:
-    image: postgres
+    image: kartoza/postgis:9.6-2.4
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DBNAME=gis
+      - POSTGRES_USER=user001
+      - POSTGRES_PASS=123456789
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 25s
+      timeout: 5s
+      retries: 15
   web:
     build: ./backend
     command: python backend/manage.py runserver 0.0.0.0:8000
@@ -17,8 +22,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DBNAME=gis
+      - POSTGRES_USER=user001
+      - POSTGRES_PASS=123456789
     depends_on:
-      - db
+      db:
+        condition: service_healthy
