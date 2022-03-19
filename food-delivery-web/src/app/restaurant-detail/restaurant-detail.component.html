@@ -1,0 +1,21 @@
+<div *ngIf="state$ | async as restaurant">
+  <h2>Restaurant Detail</h2>
+
+  <ul>
+    <div>
+      <strong>Name: </strong> {{restaurant.name}}
+    </div>
+
+    <div>
+      <strong>Location: </strong> {{restaurant.location}}
+    </div>
+
+    <div>
+      <strong>Address: </strong> {{restaurant.address}}
+    </div>
+
+    <div>
+      <strong>City: </strong> {{restaurant.city}}
+    </div>
+  </ul>
+</div>
