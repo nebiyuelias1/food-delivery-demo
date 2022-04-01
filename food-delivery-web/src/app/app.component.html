@@ -1,4 +1,9 @@
-<h1>Restaurants:</h1>
+<div class="flex h-screen bg-gray-50 dark:bg-gray-900">
+  <app-sidebar [isSideMenuOpen]="isSideBarOpen"></app-sidebar>
+  <app-main class="w-full" (sideBarToggleEvent)="handleSideBarToggleEvent($event)"></app-main>
+</div>
+
+<!-- <h1>Restaurants:</h1>
 
 <div class="container">
   <ul class="container__left">
@@ -12,4 +17,4 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
+ -->

@@ -5,11 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainComponent } from './main/main.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RestaurantDetailComponent
+    RestaurantDetailComponent,
+    SidebarComponent,
+    MainComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { Restaurant } from './restaurant';
 })
 export class AppComponent implements OnInit {
   restaurants$!: Observable<Restaurant[]>;
+  isSideBarOpen = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -20,5 +21,9 @@ export class AppComponent implements OnInit {
         position.coords.latitude
       );
     });
+  }
+
+  handleSideBarToggleEvent(event: boolean) {
+    this.isSideBarOpen = event;
   }
 }
