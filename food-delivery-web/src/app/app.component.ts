@@ -9,18 +9,11 @@ import { Restaurant } from './restaurant';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  restaurants$!: Observable<Restaurant[]>;
   isSideBarOpen = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor() {}
 
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.restaurants$ = this.apiService.getNearbyRestaurants(
-        position.coords.longitude,
-        position.coords.latitude
-      );
-    });
   }
 
   handleSideBarToggleEvent(event: boolean) {
