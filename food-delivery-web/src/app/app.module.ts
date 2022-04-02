@@ -12,6 +12,8 @@ import { RestaurantsListComponent } from './restaurants-list/restaurants-list.co
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
     MainComponent,
     NavBarComponent,
     RestaurantsListComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
