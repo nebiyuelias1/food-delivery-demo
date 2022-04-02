@@ -10,6 +10,8 @@ import { MainComponent } from './main/main.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RestaurantsListComponent } from './restaurants-list/restaurants-list.component';
 import { AboutComponent } from './about/about.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
