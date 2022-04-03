@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-order-form',
@@ -13,7 +14,7 @@ export class OrderFormComponent implements OnInit {
     | ModalComponent<OrderFormComponent>
     | undefined;
 
-  constructor() {
+  constructor(private toastService: HotToastService) {
     this.form = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -39,5 +40,10 @@ export class OrderFormComponent implements OnInit {
 
   async close(): Promise<void> {
     await this.modal?.close();
+  }
+
+  async submit() {
+    await this.modal?.close();
+    this.toastService.success('Order sent successfully');
   }
 }
