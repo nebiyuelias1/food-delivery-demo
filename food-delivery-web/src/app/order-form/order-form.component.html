@@ -1,0 +1,60 @@
+<app-modal #modalComponent>
+  <h2 class="mt-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    Order Form
+  </h2>
+
+  <form [formGroup]="form">
+    <!-- <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">
+        Name
+      </span>
+      <input class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input" placeholder="Enter your name">
+      <span class="text-xs text-red-600 dark:text-red-400">
+        Your password is too short.
+      </span>
+    </label> -->
+
+    <label for="firstName" class="block mt-2 text-xs font-semibold text-gray-600">First Name <span
+        class="text-red-600">*</span></label>
+    <input id="firstName" type="text" name="firstname" formControlName="firstName"
+      class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+      placeholder="Enter your first name here" />
+    <span *ngIf="!firstName.pristine && firstName.errors" class="text-xs text-red-600 dark:text-red-400">
+      First Name is required.
+    </span>
+
+    <label for="lastName" class="block mt-2 text-xs font-semibold text-gray-600">Last Name <span
+        class="text-red-600">*</span></label>
+    <input id="lastName" type="text" name="lastname" formControlName="lastName"
+      class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+      placeholder="Enter your last name here" />
+    <span *ngIf="!lastName.pristine && lastName.errors" class="text-xs text-red-600 dark:text-red-400">
+      Last Name is required.
+    </span>
+
+    <label for="quantity" class="block mt-2 text-xs font-semibold text-gray-600">Quantity <span
+        class="text-red-600">*</span></label>
+    <input id="quantity" type="number" formControlName="quantity"
+      class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+      placeholder="Enter the amount you want to order here" />
+    <span *ngIf="!quantity.pristine && quantity.getError('min')" class="text-xs text-red-600 dark:text-red-400">
+      You must order at least one item.
+    </span>
+
+    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+  </form>
+</app-modal>
+
+<ng-template #toolbar>
+  <div class="py-3 flex justify-end">
+    <button type="button" (click)="close()"
+      class="rounded-md sm:tracking-wider mx-2 border border-gray-300 px-4 py-2 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+      Close
+    </button>
+
+    <button [disabled]="!form.valid"
+      class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+      <span>Submit</span>
+    </button>
+  </div>
+</ng-template>

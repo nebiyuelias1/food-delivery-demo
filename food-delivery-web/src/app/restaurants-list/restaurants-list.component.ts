@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { debounceTime, map } from 'rxjs/operators';
 import { ApiService } from '../api.service';
+import { ModalService } from '../modal.service';
+import { OrderFormComponent as OrderFormComponentType } from '../order-form/order-form.component';
 import { Restaurant } from '../restaurant';
 
 @Component({
@@ -18,7 +20,7 @@ export class RestaurantsListComponent implements OnInit {
   private latitude?: number = undefined;
   private subject = new Subject<string>();
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private modalService: ModalService<OrderFormComponentType>) {}
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -58,5 +60,10 @@ export class RestaurantsListComponent implements OnInit {
 
   handleKeyUpEvent(event: any) {
     this.subject.next(event.target.value);
+  }
+
+  async openOrderForm() {
+    const {OrderFormComponent} = await import('../order-form/order-form.component');
+    await this.modalService.open(OrderFormComponent);
   }
 }

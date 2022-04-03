@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { ModalComponent } from './modal/modal.component';
+import { OrderFormComponent } from './order-form/order-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,17 @@ import { HomeComponent } from './home/home.component';
     RestaurantsListComponent,
     AboutComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    ModalComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
